@@ -2,34 +2,43 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [ counter, setCounter ] = useState(0)
 
+  const [clicks, setClicks] = useState({
+    left: 0, right: 0
+  })
 
-  const increment = () => setCounter(counter + 1)
-  const desincrement = () => setCounter(counter - 1)
-  const setZero = () => setCounter(0)
+  const handLeftClick = () =>{
+    const newClicks = {
+      left: clicks.left + 1,
+      right: clicks.right
+    }
+    setClicks(newClicks)
+  }
 
-  return (
-    <>
-      <Display counter = {counter} />
-      <Button onClick = {increment}  text = {"sum"}/>
-      <Button onClick = {desincrement} text = {"rest"}/>
-      <Button onClick = {setZero}  text = {"reset"}/>
-    </>
-  )
-}
-
-const Display = ({counter}) => <> <h1>{counter}</h1> </>
-
-const Button = ({onClick, text}) =>{
+  const handRightClick = () =>{
+    const newClicks = {
+      left: clicks.left,
+      right: clicks.right + 1
+    }
+    setClicks(newClicks)
+  }
 
   return(
     <>
-      <button onClick={onClick}>
-        {text}
+      {clicks.left}
+      <button onClick={handLeftClick}>
+        left
       </button>
+
+      <button onClick={handRightClick}>
+        right
+      </button>
+      {clicks.right}
     </>
   )
+  
 }
+
+
 
 export default App

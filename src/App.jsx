@@ -19,7 +19,6 @@ const App = () => {
   )
 }
 
-
 const Display = ({counter}) => <> <h1>{counter}</h1> </>
 
 const Button = ({onClick, text}) =>{
